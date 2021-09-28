@@ -1,0 +1,12 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+    <RootNamespace>SDM_Compulsory.Application</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\SDM-Compulsory.Application.Domain\SDM-Compulsory.Domain.csproj" />
+  </ItemGroup>
+
+</Project>
