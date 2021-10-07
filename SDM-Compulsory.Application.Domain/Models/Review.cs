@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace SDM_Compulsory.Domain.Models
 {
@@ -12,6 +8,5 @@ namespace SDM_Compulsory.Domain.Models
         int Movie { get; set; }
         int Grade { get; set; }
         DateTime ReviewDate { get; set; }
-
     }
 }

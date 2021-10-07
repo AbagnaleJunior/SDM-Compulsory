@@ -1,12 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace SDM_Complusory.Infrastructure.SQLLite.Entities
+namespace SDM_Compulsory.Infrastructure.SQLLite.Entities
 {
-    public class RatingEntity
+    public class ReviewEntity
     {
         public int Id { get; set; }
         public int Reviewer { get; set; }

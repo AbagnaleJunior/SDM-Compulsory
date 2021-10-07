@@ -1,5 +1,4 @@
 ﻿using SDM_Compulsory.Domain.IServices;
-using System;
 using System.Collections.Generic;
 
 namespace SDM_Compulsory.Application.Services
@@ -17,7 +16,6 @@ namespace SDM_Compulsory.Application.Services
         public int GetNumberOfReviewsFromReviewer(int reviewer)
         {
             return _repo.GetNumberOfReviewsFromReviewer(reviewer);
-
         }
 
         public double GetAverageRateFromReviewer(int reviewer)
@@ -53,7 +51,6 @@ namespace SDM_Compulsory.Application.Services
         public List<int> GetMostProductiveReviewers()
         {
             return _repo.GetMostProductiveReviewers();
-
         }
 
         public List<int> GetTopRatedMovies(int amount)

@@ -1,18 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using SDM_Compulsory.Application.IRepositories;
 
-namespace SDM_Complusory.Infrastructure.SQLLite.Repositories
+namespace SDM_Compulsory.Infrastructure.SQLLite.Repositories
 {
-    public class RatingRepository : IReviewRepository
+    public class ReviewRepository : IReviewRepository
     {
 
         private readonly ReviewsDbContext _ctx;
 
-        public RatingRepository(ReviewsDbContext ctx)
+        public ReviewRepository(ReviewsDbContext ctx)
         {
             _ctx = ctx;
         }
@@ -20,7 +17,6 @@ namespace SDM_Complusory.Infrastructure.SQLLite.Repositories
         public int GetNumberOfReviewsFromReviewer(int reviewer)
         {
             return _ctx.Ratings.Count(x => x.Reviewer == reviewer);
-
         }
 
         public double GetAverageRateFromReviewer(int reviewer)
@@ -66,29 +62,53 @@ namespace SDM_Complusory.Infrastructure.SQLLite.Repositories
             var maxCount = groupedRatings.First().Count;
 
             return groupedRatings.Where(x => x.Count == maxCount).Select(r => r.Id).ToList();
-
         }
 
         public List<int> GetTopRatedMovies(int amount)
         {
-            var groupedRatings =
-                _ctx.Ratings
-                .OrderByDescending(r => r.Movie)
-                .GroupBy(r => r.Grade)
+            var groupedRatings = _ctx.Ratings
+                .GroupBy(r => r.Movie)
                 .Select(r => new
                 {
-                    Id = r.Key,
-                    Avg = r.Average(r => r.Grade)
-                }).OrderByDescending(r => r.Avg).ToList();
+                    Movie = r.Key,
+                    AvgGrade = r.Average(g => g.Grade)
+                })
+                .OrderByDescending(r => r.AvgGrade)
+                .Take(amount)
+                .ToList();
 
-            return groupedRatings.Select(r => r.Id).Take(amount).ToList();
+            return groupedRatings.Select(r => r.Movie).ToList();
+
+
+            //var groupedRatings =
+            //    _ctx.Ratings
+            //    .OrderByDescending(r => r.Movie)
+            //    .GroupBy(r => r.Grade)
+            //    .Select(r => new
+            //    {
+            //        Id = r.Key,
+            //        Avg = r.Average(r => r.Grade),
+            //        MovieId = r.Max(x => x.Movie)
+            //    }).OrderByDescending(r => r.Avg).Take(amount).ToList();
+
+            //List<int> movies = new List<int>();
+            //foreach(var rating in groupedRatings)
+            //{
+            //    //movies.Add(_ctx.Ratings.Find(rating.Id).Movie);
+            //    movies.Add(rating.MovieId);
+            //}
+            //return movies;
+            ////return groupedRatings.Select(r => r.Id).Take(amount).ToList();
         }
 
         public List<int> GetTopMoviesByReviewer(int reviewer)
         {
             return _ctx.Ratings
                 .Where(r => r.Reviewer == reviewer)
-                .OrderByDescending(r => r.Grade).Select(r => r.Movie).ToList();
+                .OrderByDescending(r => r.Grade)
+                .ThenBy(r => r.Date)
+                .Select(r => r.Movie)
+                .ToList();
         }
     }
 }

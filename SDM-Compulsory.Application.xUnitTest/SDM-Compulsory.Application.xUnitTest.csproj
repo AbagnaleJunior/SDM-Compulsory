@@ -20,4 +20,8 @@
     </PackageReference>
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\SDM-Complusory.Infrastructure.SQLLite\SDM-Compulsory.Infrastructure.EF.SQLite.csproj" />
+  </ItemGroup>
+
 </Project>
