@@ -16,7 +16,7 @@ namespace SDM_Compulsory.UI
         {
             var serviceCollection = new ServiceCollection();
 
-            serviceCollection.AddDbContext<ReviewsDbContext>(options => options.UseSqlite("Data Source=C:\\School\\Review.db;"));
+            serviceCollection.AddDbContext<ReviewsDbContext>(options => options.UseSqlite("Data Source=../../../../SDM-Complusory.Infrastructure.SQLLite/Review.db;"));
             serviceCollection.AddScoped<IReviewRepository, ReviewRepository>();
             serviceCollection.AddScoped<IReviewService, ReviewService>();
 
