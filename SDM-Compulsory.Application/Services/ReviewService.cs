@@ -62,6 +62,11 @@ namespace SDM_Compulsory.Application.Services
         {
             return _repo.GetTopMoviesByReviewer(reviewer);
         }
+        public List<int> GetReviewersByMovie(int movie)
+        {
+            return _repo.GetReviewersByMovie(movie);
+        }
+
 
     }
 }

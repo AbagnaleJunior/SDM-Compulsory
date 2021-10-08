@@ -126,5 +126,17 @@ namespace SDM_Compulsory.Application.xUnitTest
 
             Assert.Equal(result, _service.GetTopMoviesByReviewer(148));
         }
+
+        [Fact]
+        public void GetReviewersByMovie()
+        {
+            List<int> result = new List<int>();
+            result.Add(148);
+            result.Add(1);
+            result.Add(2);
+
+            Assert.Equal(result, _service.GetReviewersByMovie(387418));
+        }
+
     }
 }

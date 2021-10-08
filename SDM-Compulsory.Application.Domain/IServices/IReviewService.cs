@@ -44,5 +44,8 @@ namespace SDM_Compulsory.Domain.IServices
         //10.	On input N, what are the movies that reviewer N has reviewed? The list should be sorted decreasing by rate first, and date secondly.
         List<int> GetTopMoviesByReviewer(int reviewer);
 
+        //11. On input N, who are the reviewers that have reviewed movie N? The list
+        List<int> GetReviewersByMovie(int movie);
+
     }
 }

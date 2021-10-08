@@ -110,5 +110,15 @@ namespace SDM_Compulsory.Infrastructure.SQLLite.Repositories
                 .Select(r => r.Movie)
                 .ToList();
         }
+
+        public List<int> GetReviewersByMovie(int movie)
+        {
+            return _ctx.Ratings
+                .Where(r => r.Movie == movie)
+                .OrderByDescending(r => r.Grade)
+                .ThenBy(r => r.Date)
+                .Select(r => r.Reviewer)
+                .ToList();
+        }
     }
 }

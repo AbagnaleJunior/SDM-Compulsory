@@ -23,10 +23,12 @@ namespace SDM_Compulsory.UI
             var serviceProvider = serviceCollection.BuildServiceProvider();
             var reviewService = serviceProvider.GetRequiredService<IReviewService>();
 
-            Console.WriteLine(reviewService.GetAverageRateFromReviewer(1).ToString());
+            //Console.WriteLine(reviewService.GetAverageRateFromReviewer(1).ToString());
 
-            PrintList<int>(reviewService.GetTopMoviesByReviewer(148));
-            
+            //PrintList<int>(reviewService.GetTopMoviesByReviewer(148));
+
+            PrintList<int>(reviewService.GetReviewersByMovie(148));
+
             Console.ReadLine();
         }
 

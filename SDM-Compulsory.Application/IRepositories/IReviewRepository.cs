@@ -16,6 +16,7 @@ namespace SDM_Compulsory.Application.IRepositories
         List<int> GetMostProductiveReviewers();
         List<int> GetTopRatedMovies(int amount);
         List<int> GetTopMoviesByReviewer(int reviewer);
+        List<int> GetReviewersByMovie(int movie);
 
     }
 }
