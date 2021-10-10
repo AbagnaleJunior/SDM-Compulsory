@@ -214,14 +214,6 @@ namespace SDM_Compulsory
                     ReviewersMenuText();
                 }
 
-                if (choice == 6)
-                {
-                    Clear();
-                    PrintList(_reviewService.GetMoviesWithHighestNumberOfTopRates());
-                    PrintNewLine();
-                    ReviewersMenuText();
-                }
-
                 if (choice == 9)
                 {
                     Clear();
@@ -239,7 +231,6 @@ namespace SDM_Compulsory
             Print(StringConstants.PrintNumberOfRatesByReviewerText);
             Print(StringConstants.PrintMostProductiveReviewerText);
             Print(StringConstants.PrintTopMoviesByReviewerText);
-            Print(StringConstants.PrintMoviesWithHighestNumberOfTopRatesText);
             PrintNewLine();
             Print(StringConstants.MainMenu);
         }
