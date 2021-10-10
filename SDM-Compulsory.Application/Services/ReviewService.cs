@@ -32,41 +32,40 @@ namespace SDM_Compulsory.Application.Services
         {
             return _repo.GetNumberOfReviews(movie);
         }
-
+        
         public double GetAverageRateOfMovie(int movie)
         {
             return _repo.GetAverageRateOfMovie(movie);
         }
-
+        
         public int GetNumberOfRates(int movie, int rate)
         {
             return _repo.GetNumberOfRates(movie, rate);
         }
-
+        
         public List<int> GetMoviesWithHighestNumberOfTopRates()
         {
             return _repo.GetMoviesWithHighestNumberOfTopRates();
         }
-
-        public List<int> GetMostProductiveReviewers()
+        
+        public List<int> GetMostProductiveReviewer()
         {
-            return _repo.GetMostProductiveReviewers();
+            return _repo.GetMostProductiveReviewer();
         }
-
+        
         public List<int> GetTopRatedMovies(int amount)
         {
             return _repo.GetTopRatedMovies(amount);
         }
-
+        
         public List<int> GetTopMoviesByReviewer(int reviewer)
         {
             return _repo.GetTopMoviesByReviewer(reviewer);
         }
+        
         public List<int> GetReviewersByMovie(int movie)
         {
             return _repo.GetReviewersByMovie(movie);
         }
-
-
     }
 }

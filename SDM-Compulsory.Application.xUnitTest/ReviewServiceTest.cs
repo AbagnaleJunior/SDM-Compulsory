@@ -21,9 +21,10 @@ namespace SDM_Compulsory.Application.xUnitTest
             IReviewRepository repo = new ReviewRepository(dbContext);
             _service = new ReviewService(repo);
         }
+        
+        // _______________TEST-DATABASE____________________
 
-        //ID - REVIEWER - MOVIE - GRADE - DATE
-
+        //ID - REVIEWER - MOVIE - GRADE ------- DATE
         //9807	    1	1488844	    3	2005-09-06 00:00:00
         //9808	    1	822109	    5	2005-05-13 00:00:00
         //9809	    1	885013	    4	2005-10-19 00:00:00
@@ -40,7 +41,6 @@ namespace SDM_Compulsory.Application.xUnitTest
         //528602	148	267841	    3	2005-01-02 00:00:00
         //528603	148	964306	    2	2005-01-04 00:00:00
         //1001735	1	822109	    4	2005-05-13 00:00:00
-
 
         [Theory]
         [InlineData(1,6)]
@@ -96,7 +96,7 @@ namespace SDM_Compulsory.Application.xUnitTest
         [InlineData(1)]
         public void GetMostProductiveReviewers(int expectedResult)
         {
-            Assert.Equal(expectedResult, _service.GetMostProductiveReviewers().Count);
+            Assert.Equal(expectedResult, _service.GetMostProductiveReviewer().Count);
         }
 
         [Fact]
@@ -116,7 +116,6 @@ namespace SDM_Compulsory.Application.xUnitTest
         [Fact]
         public void GetTopMoviesByReviewer()
         {
-
             List<int> result = new List<int>();
             result.Add(218497);
             result.Add(1114519);
@@ -137,6 +136,5 @@ namespace SDM_Compulsory.Application.xUnitTest
 
             Assert.Equal(result, _service.GetReviewersByMovie(387418));
         }
-
     }
 }

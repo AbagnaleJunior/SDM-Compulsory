@@ -1,15 +1,17 @@
-﻿using System.Collections.Generic;
+﻿using SDM_Compulsory.Application.IRepositories;
+using System;
+using System.Collections.Generic;
 using System.Linq;
-using SDM_Compulsory.Application.IRepositories;
+using System.Text;
+using System.Threading.Tasks;
 
-namespace SDM_Compulsory.Infrastructure.SQLLite.Repositories
+namespace SDM_Compulsory.Infrastructure.MSSQL.Repositories
 {
-    public class ReviewRepository : IReviewRepository
+    class ReviewRepository : IReviewRepository
     {
+        private readonly ReviewsDbSQLContext _ctx;
 
-        private readonly ReviewsDbContext _ctx;
-
-        public ReviewRepository(ReviewsDbContext ctx)
+        public ReviewRepository(ReviewsDbSQLContext ctx)
         {
             _ctx = ctx;
         }
@@ -53,6 +55,7 @@ namespace SDM_Compulsory.Infrastructure.SQLLite.Repositories
         {
             var groupedRatings =
                 _ctx.Ratings
+                .OrderByDescending(x => x.Reviewer)
                 .GroupBy(x => x.Reviewer)
                 .Select(x => new { Id = x.Key, Count = x.Count() })
                 .OrderByDescending(x => x.Count)
@@ -77,6 +80,27 @@ namespace SDM_Compulsory.Infrastructure.SQLLite.Repositories
                 .ToList();
 
             return groupedRatings.Select(r => r.Movie).ToList();
+
+
+            //var groupedRatings =
+            //    _ctx.Ratings
+            //    .OrderByDescending(r => r.Movie)
+            //    .GroupBy(r => r.Grade)
+            //    .Select(r => new
+            //    {
+            //        Id = r.Key,
+            //        Avg = r.Average(r => r.Grade),
+            //        MovieId = r.Max(x => x.Movie)
+            //    }).OrderByDescending(r => r.Avg).Take(amount).ToList();
+
+            //List<int> movies = new List<int>();
+            //foreach(var rating in groupedRatings)
+            //{
+            //    //movies.Add(_ctx.Ratings.Find(rating.Id).Movie);
+            //    movies.Add(rating.MovieId);
+            //}
+            //return movies;
+            ////return groupedRatings.Select(r => r.Id).Take(amount).ToList();
         }
 
         public List<int> GetTopMoviesByReviewer(int reviewer)
@@ -100,3 +124,4 @@ namespace SDM_Compulsory.Infrastructure.SQLLite.Repositories
         }
     }
 }
+

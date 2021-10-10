@@ -6,8 +6,11 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Entities\" />
-    <Folder Include="Repositories\" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="5.0.10" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\SDM-Compulsory.Application\SDM-Compulsory.Application.csproj" />
   </ItemGroup>
 
 </Project>
