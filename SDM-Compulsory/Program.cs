@@ -13,7 +13,6 @@ namespace SDM_Compulsory.UI
         static void Main(string[] args)
         {
             //DEPENDENCY INJECTION "MAGIC CODE"
-
             var serviceCollection = new ServiceCollection();
             serviceCollection.AddDbContext<ReviewsDbContext>(options => options.UseSqlite("Data Source=../../../../SDM-Complusory.Infrastructure.SQLLite/Review.db;"));
 

@@ -45,7 +45,6 @@ namespace SDM_Compulsory
                     ExitProgram();
                 }
             }
-
         }
 
         private int GetSelection()
@@ -141,7 +140,6 @@ namespace SDM_Compulsory
 
         private void MoviesMenuText()
         {
-            
             Print("MOVIES");
             PrintNewLine();
             Print(StringConstants.PrintNumberOfReviewsText);
@@ -234,7 +232,6 @@ namespace SDM_Compulsory
 
         private void ReviewersMenuText()
         {
-
             Print("Reviewers");
             PrintNewLine();
             Print(StringConstants.PrintNumberOfReviewsFromReviewerText);
@@ -282,7 +279,6 @@ namespace SDM_Compulsory
         {
             Console.WriteLine(value);
         }
-
     }
 }
    

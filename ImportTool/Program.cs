@@ -17,17 +17,12 @@ namespace ImportTool
             );
 
             Console.WriteLine("Import to database");
-
             SqliteConnection sqliteConnection = new SqliteConnection("Data Source=D:\\School\\Review.db;");
-
             sqliteConnection.Open();
-            
             SqliteCommand sqliteCommand = new SqliteCommand("INSERT INTO Ratings (Reviewer, Movie, Grade, Date) VALUES (@Reviewer, @Movie, @Grade, @Date)", sqliteConnection);
 
             for (int i = 0; i < rows.Count; i++)
             {
-
-
                 sqliteCommand.Parameters.Clear();
                 sqliteCommand.Parameters.AddWithValue("Reviewer", rows[i].Reviewer);
                 sqliteCommand.Parameters.AddWithValue("Movie", rows[i].Movie);
@@ -42,14 +37,12 @@ namespace ImportTool
                 }
             }
 
-
             if (sqliteConnection.State != ConnectionState.Closed)
             {
                 sqliteConnection.Close();
             }
 
             Console.WriteLine("Finished!");
-
             Console.Read();
         }
     }
